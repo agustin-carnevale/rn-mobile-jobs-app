@@ -3,8 +3,6 @@ import {View, StyleSheet} from 'react-native'
 import {Text} from 'react-native-elements'
 
 const ReviewScreen = ({navigation})=>{
-
-
     return (
         <View style={styles.container}>
             <Text h4>ReviewScreen</Text>
