@@ -1,11 +1,17 @@
 import React from 'react'
 import {View, StyleSheet} from 'react-native'
-import {Text} from 'react-native-elements'
+import {Button} from 'react-native-elements'
+import {connect} from 'react-redux'
+import * as actions from '../store/actions'
 
-const SettingsScreen = ()=>{
+const SettingsScreen = (props)=>{
     return (
         <View style={styles.container}>
-            <Text h4>SettingsScreen</Text>
+            <Button 
+              title="Reset Liked Jobs"
+              icon={{name: 'delete-forever'}}
+              onPress={props.clearLikedJobs}
+            />
         </View>
     )
 }
@@ -15,8 +21,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
+    paddingTop: 50
   },
 });
 
-export default SettingsScreen
+export default connect(null,actions)(SettingsScreen)

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from 'react-native-elements'
+import {Button, Icon} from 'react-native-elements'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -16,10 +16,34 @@ const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
 const MainFlow = () =>(
-    <MainTab.Navigator>
-      <MainTab.Screen name="Map" component={MapScreen} />
-      <MainTab.Screen name="Deck" component={DeckScreen} />
-      <MainTab.Screen name="ReviewFlow" component={ReviewFlow} />
+    <MainTab.Navigator
+      tabBarOptions={{
+        activeTintColor: 'purple',
+        inactiveTintColor: 'gray',
+        labelStyle: {fontSize: 12}
+      }}
+    >
+      <MainTab.Screen 
+        name="Map" component={MapScreen} 
+        options={{
+          tabBarLabel: 'Map',
+          tabBarIcon: ({color}) => <Icon name='my-location' color={color} size={30}/>
+        }}
+      />
+      <MainTab.Screen 
+        name="Deck" component={DeckScreen} 
+        options={{
+          tabBarLabel: 'Jobs',
+          tabBarIcon: ({color}) => <Icon name='description' color={color} size={30}/>
+        }}
+      />
+      <MainTab.Screen 
+        name="ReviewFlow" title="Liked Jobs" component={ReviewFlow} 
+        options={{
+          tabBarLabel: 'Liked',
+          tabBarIcon: ({color}) => <Icon name='favorite' color={color} size={30}/>
+        }}
+      />
     </MainTab.Navigator>
 )
 
